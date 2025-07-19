@@ -1,3 +1,5 @@
+import React from "react";
+import ReactDOM from "react-dom";
 /**
  *
  * <div id="parent">
@@ -35,4 +37,4 @@ const parent = React.createElement("div",{id: "parent",},[
 // console.log(heading); //object
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(parent); // replaces whatever is inside the root 
+root.render(parent); // replaces whatever is inside the root
