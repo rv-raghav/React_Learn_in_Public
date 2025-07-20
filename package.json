@@ -2,32 +2,16 @@
   "name": "react_learn_in_public",
   "version": "1.0.0",
   "description": "This is react learn in public git repo of my react journey",
-  "keywords": [
-    "react",
-    "raghav"
-  ],
-  "homepage": "https://github.com/rv-raghav/React_Learn_in_Public#readme",
-  "bugs": {
-    "url": "https://github.com/rv-raghav/React_Learn_in_Public/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rv-raghav/React_Learn_in_Public.git"
-  },
-  "license": "ISC",
   "author": "Raghav Verma",
-  "type": "commonjs",
+  "license": "ISC",
+  "workspaces": [
+    "1.ReactCreateElement",
+    "2.JSX",
+    "3.ReactComponent"
+  ],
   "scripts": {
-    "test": "jest"
-  },
-  "devDependencies": {
-    "parcel": "^2.15.4"
-  },
-  "dependencies": {
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
-  },
-  "browserlist": [
-    "last 2 versions"
-  ]
+    "start:1": "cd 1.ReactCreateElement && npm start",
+    "start:2": "cd 2.JSX && npm start",
+    "start:3": "cd 3.ReactComponent && npm start"
+  }
 }

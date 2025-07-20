@@ -1,35 +1,25 @@
 {
-  "name": "react_learn_in_public",
+  "name": "3-react-component",
   "version": "1.0.0",
-  "description": "This is react learn in public git repo of my react journey",
-  "keywords": [
-    "react",
-    "raghav"
-  ],
-  "homepage": "https://github.com/rv-raghav/React_Learn_in_Public#readme",
-  "bugs": {
-    "url": "https://github.com/rv-raghav/React_Learn_in_Public/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rv-raghav/React_Learn_in_Public.git"
-  },
-  "license": "ISC",
-  "author": "Raghav Verma",
+  "description": "React Components Example",
   "type": "module",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html",
     "test": "jest"
   },
-  "devDependencies": {
-    "parcel": "^2.15.4"
-  },
   "dependencies": {
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
-  "browserlist": [
+  "devDependencies": {
+    "parcel": "^2.9.3",
+    "process": "^0.11.10",
+    "jest": "^29.6.0"
+  },
+  "author": "Raghav Verma",
+  "license": "ISC",
+  "browserslist": [
     "last 2 versions"
   ]
 }
