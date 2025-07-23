@@ -18,3 +18,9 @@
 - HTTPs
 - Tree shaking - remove unused code
 - Different dev and prod bundles
+
+# React Hooks(Normal JS utility functions)
+- useState() - superpowerful state variables
+- useEffect()
+
+# Reconciliation algorithm (react fibre)
