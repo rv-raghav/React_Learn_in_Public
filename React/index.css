@@ -44,6 +44,18 @@ body {
   cursor: pointer;
 }
 
+/* Login button  */
+.login {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+  cursor: pointer;
+}
+
+.link {
+  text-decoration: none;
+}
 /* Filter Section */
 .filter {
   margin: 1rem 2rem;

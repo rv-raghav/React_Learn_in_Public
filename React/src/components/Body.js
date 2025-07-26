@@ -1,51 +1,39 @@
 import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
-  const [allRestaurants, setAllRestaurants] = useState([]);
-  const [searchText, setsearchText] = useState("");
-  // whenever state variables update, react triggers a reconciliation cycle(re-renders the component)
+  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const [searchText, setSearchText] = useState("");
+
   useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = async () => {
     const res = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.471113686461567&lng=77.31343735009432&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await res.json();
-    console.log("✅ Full API response:", json);
 
-    let restaurantCards = [];
+    const restaurants =
+      json?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants || [];
 
-    json.data.cards.forEach((card) => {
-      const innerCard = card?.card?.card;
-      // Check if it contains restaurants inside gridElements
-      if (innerCard?.gridElements?.infoWithStyle?.restaurants) {
-        restaurantCards = innerCard.gridElements.infoWithStyle.restaurants;
-      }
-    });
-
-    console.log("✅ Parsed Restaurant List:", restaurantCards);
-    setListOfRestaurants(restaurantCards);
-    setAllRestaurants(restaurantCards);
+    setListOfRestaurants(restaurants);
+    setFilteredRestaurants(restaurants);
   };
-  // conditional rendering
-  // if(listOfRestaurants.length == 0) {
-  //   return <Shimmer />
-  // }
 
   const filterTopRated = () => {
-    const filtered = allRestaurants.filter((res) => res.info?.avgRating > 4.5);
-    setListOfRestaurants(filtered);
+    const filteredList = listOfRestaurants.filter(
+      (res) => Number(res.info.avgRating) > 4
+    );
+    setFilteredRestaurants(filteredList);
   };
 
-  // Optional loading text
-  // if (listOfRestaurants.length === 0) return <h2>Loading restaurants...</h2>;
-
-  return listOfRestaurants.length == 0 ? (
+  return filteredRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body">
@@ -55,29 +43,40 @@ const Body = () => {
             type="search"
             className="search-box"
             value={searchText}
-            onChange={(e) => {
-              setsearchText(e.target.value);
-            }}
+            onChange={(e) => setSearchText(e.target.value)}
           />
           <button
             onClick={() => {
-              const filteredRestaurant = allRestaurants.filter((res) =>
+              const filteredList = listOfRestaurants.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
-              setListOfRestaurants(filteredRestaurant);
+              setFilteredRestaurants(filteredList);
             }}
           >
             Search
           </button>
         </div>
+
         <button className="filter-btn" onClick={filterTopRated}>
           Top Rated Restaurants
+        </button>
+
+        <button
+          className="filter-btn"
+          onClick={() => setFilteredRestaurants(listOfRestaurants)}
+        >
+          Show All
         </button>
       </div>
 
       <div className="res-container">
-        {listOfRestaurants.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} resData={restaurant.info} />
+        {filteredRestaurants.map((restaurant) => (
+          <Link
+            key={restaurant.info.id}
+            to={"/restaurants/" + restaurant.info.id}
+          >
+            <RestaurantCard resData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>
