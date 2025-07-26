@@ -1,6 +1,7 @@
 # React Learn in Public
 
 # Parcel
+
 - Dev Build
 - Local Server
 - HMR- Hot Module Replacement
@@ -20,7 +21,13 @@
 - Different dev and prod bundles
 
 # React Hooks(Normal JS utility functions)
+
 - useState() - superpowerful state variables
 - useEffect()
 
 # Reconciliation algorithm (react fibre)
+
+# 2 types of routing
+
+- client side routing
+- server side routing
