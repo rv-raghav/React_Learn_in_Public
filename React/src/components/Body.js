@@ -36,20 +36,32 @@ const Body = () => {
 
   const onlineStatus = useOnlineStatus();
 
-  if(onlineStatus === false) return <h1>Looks like u are offline check your internet connection</h1>
+  if (onlineStatus === false)
+    return (
+      <div className="flex items-center justify-center h-[70vh]">
+        <h1 className="text-red-600 text-xl font-semibold text-center px-4">
+          Looks like you are offline. Please check your internet connection.
+        </h1>
+      </div>
+    );
+
   return filteredRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body">
-      <div className="filter">
-        <div className="search">
+    <div className="max-w-7xl mx-auto px-4 md:px-8 py-8">
+      {/* Filter & Search Section */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
+        {/* Search Box */}
+        <div className="flex flex-1 max-w-xl mx-auto sm:mx-0">
           <input
             type="search"
-            className="search-box"
+            className="flex-grow border border-gray-300 rounded-l-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500"
+            placeholder="Search restaurants..."
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
           <button
+            className="bg-pink-500 hover:bg-pink-600 text-white px-5 rounded-r-md transition"
             onClick={() => {
               const filteredList = listOfRestaurants.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -61,23 +73,30 @@ const Body = () => {
           </button>
         </div>
 
-        <button className="filter-btn" onClick={filterTopRated}>
-          Top Rated Restaurants
-        </button>
-
-        <button
-          className="filter-btn"
-          onClick={() => setFilteredRestaurants(listOfRestaurants)}
-        >
-          Show All
-        </button>
+        {/* Filter Buttons */}
+        <div className="flex flex-wrap gap-3 justify-center sm:justify-start">
+          <button
+            className="bg-pink-500 text-white px-4 py-2 rounded-md transition hover:bg-pink-600 shadow"
+            onClick={filterTopRated}
+          >
+            Top Rated Restaurants
+          </button>
+          <button
+            className="bg-gray-200 px-4 py-2 rounded-md transition hover:bg-gray-300"
+            onClick={() => setFilteredRestaurants(listOfRestaurants)}
+          >
+            Show All
+          </button>
+        </div>
       </div>
 
-      <div className="res-container">
+      {/* Restaurants List */}
+      <div className="flex flex-wrap gap-6 justify-center">
         {filteredRestaurants.map((restaurant) => (
           <Link
             key={restaurant.info.id}
             to={"/restaurants/" + restaurant.info.id}
+            className="hover:scale-105 transition-transform"
           >
             <RestaurantCard resData={restaurant} />
           </Link>
