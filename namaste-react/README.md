@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-# React Learn in Public
-
-# Parcel
-
-- Dev Build
-- Local Server
-- HMR- Hot Module Replacement
-- File watching algorithm - written in c++
-=======
 # Namaste React 🚀
 
 
@@ -16,7 +6,6 @@
 - Local Server
 - HMR = Hot Module Replacement
 - File Watching Algorithm - written in C++
->>>>>>> ec5af777c320506a456f293561bbbc69457ea872
 - Caching - Faster Builds
 - Image Optimization
 - Minification
@@ -26,24 +15,6 @@
 - Code Splitting
 - Differential Bundling - support older browsers
 - Diagnostic
-<<<<<<< HEAD
-- error handling
-- HTTPs
-- Tree shaking - remove unused code
-- Different dev and prod bundles
-
-# React Hooks(Normal JS utility functions)
-
-- useState() - superpowerful state variables
-- useEffect()
-
-# Reconciliation algorithm (react fibre)
-
-# 2 types of routing
-
-- client side routing
-- server side routing
-=======
 - Error Handling
 - HTTPs
 - Tree Shaking - remove unused code
@@ -128,4 +99,3 @@ import {Component} from "path";
  - Include @babel/preset-react inside my babel config
  - npm i -D @testing-library/jest-dom
  
->>>>>>> ec5af777c320506a456f293561bbbc69457ea872
