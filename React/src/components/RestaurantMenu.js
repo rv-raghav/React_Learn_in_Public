@@ -13,7 +13,7 @@ const RestaurantMenu = () => {
   const { name, cuisines, costForTwo } = resInfo?.cards[2]?.card?.card?.info;
   const { itemCards } =
     resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
-
+  console.log(resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards)
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       {/* Restaurant header */}
